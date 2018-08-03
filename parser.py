@@ -7,7 +7,7 @@ Limits:
     - avoid using more then one bracket per line. Normally it should work, but you should use it carefull
     - problems by differncing ttl/domaine, if domain[:-1].isdigit()"""
 
-VERSION = 1.0
+VERSION = 1.1
 
 DOMAIN_MAX_LENGHT = 255
 CLASSES = ["IN", "HS", "CH", "CS"]
@@ -350,10 +350,15 @@ if 'main' != __name__:
     from os import path as path
     
     if len(argv) == 1:
-        print("""Bind Zonefile Parser
+        print("""
+Bind Zonefile Parser
 ====================
 
-Version: {0}""".format(VERSION))
+Version: {0}
+Converts zone file to sqlite database
+
+Stand Alone Usage:
+    ./parser.py zonefile [database=zone.sqlite]\n""".format(VERSION))
     elif len(argv) == 2:
         assert path.isfile(argv[1]), "Zonefile {0} not found".format(argv[1])
         parser = Parser(argv[1])
