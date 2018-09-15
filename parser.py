@@ -345,7 +345,7 @@ value TEXT NOT NULL)""".format(self.tableName, DOMAIN_MAX_LENGHT,
         else:
             return self.connection
 
-if 'main' != __name__:
+if __name__ == "__main__":
     from sys import argv
     from os import path as path
     
