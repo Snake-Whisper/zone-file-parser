@@ -205,8 +205,13 @@ class _Parser():
                     self.ttl = entry.pop()                    
                 else:
                     self.name = entry[0]
+            try:
+                self.ttl = self.default_TTL
+            except AttributeError:
+                    self.error("Please check your zonfile. TTL not found")
+            
             self.handle(self.primKey, self.name,self.ttl, self.klasse, self.type, self.value)
-            self.ttl = self.default_TTL
+            
             del self.value
             self.primKey += 1
 
