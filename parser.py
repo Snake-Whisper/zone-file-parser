@@ -250,11 +250,11 @@ class Parser():
         self.result = list()
         for i in self.table:
             if ID and ID != i[0]: continue
-            if ID == 0 and i[0] != 0: continue # 0 is False
+            if not isinstance(ID, bool) and ID == 0 and i[0] != 0: continue
             if Domain and Domain != i[1]: continue
             if TTL and TTL != i[2]: continue
             if Class and Class != i[3]: continue
-            if Type and Class != i[4]: continue
+            if Type and Type != i[4]: continue
             if Value and Value != i[5]: continue
             self.result.append(i)
         return self.result
