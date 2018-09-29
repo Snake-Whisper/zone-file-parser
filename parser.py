@@ -300,6 +300,14 @@ class Parser():
         """Returns negative cache time - field of SOA record"""
         return self.getType("SOA")[0][5].split()[6]
 
+    def getIPv4(self):
+        """Return current IPv4 addr of origin"""
+        return self.getRecords(Domain = "@", Class = "IN", Type="A")[0][5]
+
+    def getIPv6(self):
+        """Return current IPv6 addr of origin"""
+        return self.getRecords(Domain = "@", Class = "IN", Type="AAAA")[0][5]
+
     def mkSerial(self, check = True):
         """Sets timestamp allone. If check, no serial > 99 are supported"""
         self.old_time = self.getSerial()[:8]
